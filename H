@@ -1,0 +1,27 @@
+VIDEO-2 Generative AI vs Agentic AI | Agentic AI using LangGraph | Video 1 | CampusX
+
+Conclusion
+Generative Al is about creating content, Agentic Al is about solving a goal
+Generative Al is reactive, Agentic Al is proactive (autonomous)
+Generative Al is a building block of Agentic Al
+------------------------------------------------------------------------------------------------------------
+VIDEO3 What is Agentic AI? | Agentic AI using LangGraph | Video 2 | CampusX
+Agentic AI: Autonomous AI that independently plans, decides, and acts to achieve goals.
+
+Agentic AI components enable autonomous task execution.
+
+Core Components
+
+Brain: Reasoning/planning core (LLM) for decision-making.
+​
+
+Supervisor: Oversees multi-agent workflows, delegates tasks.
+​
+
+Orchestrator: Coordinates agent actions, manages flow.
+​
+
+Memory: Stores/retrieves context, experiences for continuity.
+​
+
+Tools: External APIs/functions for real-world actions
