@@ -1,0 +1,14 @@
+# 🔹 AGENTIC GRAPH BASICS (SHORTEST NOTES)
+
+# Node  = one step in the workflow (function / tool call).
+# Edge  = connection that decides which node runs next.
+# State = shared dict-like memory passed between nodes.
+# All nodes read/write the same state.
+
+
+
+NODE= FUNTION
+NODE_I/P(OLD STATE DATA)           -------->NODE------>                NODE O/P(OLD STATE + NEW DATA) 
+NODE CAN CHANGE ONLY VALUE ON I/P NOT KEY
+
+20 MINUTES LATER SEE AGAIN
