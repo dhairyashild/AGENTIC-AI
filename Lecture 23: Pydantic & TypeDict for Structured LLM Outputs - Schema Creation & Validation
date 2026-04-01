@@ -1,8 +1,9 @@
 ###### SARANSH = TYPEDICT AND BaseModel both ised to get o/p in required scheme(datatype) from llm
 ###### just create class with typedict/pydantic and give to llm with -->
-                                                          .with_structured_output(CLASSNAME_WITH_SCHEMA)
+                                                       .with_structured_output(CLASSNAME_WITH_SCHEMA)
 ######  PYDANTIC VALIDATES DATA THIS EXTRA FROM PROPERTY TYPEDICT DONT HAVE 
-
+###### LANGCHAIN ---> STRUCTURED O/P----> 
+                           U GET TYPEDICT / PYDANTIC/JSON FORMATS BUT WE USE MOSTLY TYPEDICT / PYDANTIC
 from pydantic import BaseModel, Field, EmailStr
 from langchain_openai import ChatOpenAI
 
