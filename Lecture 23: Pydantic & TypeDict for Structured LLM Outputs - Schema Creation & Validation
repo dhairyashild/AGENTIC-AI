@@ -1,0 +1,28 @@
+###### SARANSH = TYPEDICT AND BaseModel both ised to get o/p in required scheme(datatype) from llm
+###### just create class with typedict/pydantic and give to llm with -->
+                                                          .with_structured_output(CLASSNAME_WITH_SCHEMA)
+######  PYDANTIC VALIDATES DATA THIS EXTRA FROM PROPERTY TYPEDICT DONT HAVE 
+
+from pydantic import BaseModel, Field, EmailStr
+from langchain_openai import ChatOpenAI
+
+# 1. Define the Schema (Structure)
+class User(BaseModel):                                # Inherit from BaseModel
+    """Information about a specific user."""          # Docstring helps LLM understand fields
+    name: str = Field(description="User's full name") # Field adds extra context for LLM
+    age: int = Field(gt=0, description="User's age")  # Validation: age must be > 0
+    email: EmailStr                                   # Validation: Must be a valid email format
+
+# 2. Initialize the Model
+model = ChatOpenAI(model="gpt-4o", temperature=0)
+
+# 3. Bind the Schema for Structured Output
+structured_llm = model.with_structured_output(User)   # Returns a Pydantic object, not a dict
+
+# 4. Invoke and Print
+query = "Hi, I am Dheeraj, age is 32 and my email id is dheeraj@gmail.com"
+output = structured_llm.invoke(query)
+
+print(output)
+# Result: name='Dheeraj' age=32 email='dheeraj@gmail.com'
+print(output.name) # Access via dot notation (e.g., Dheeraj)
