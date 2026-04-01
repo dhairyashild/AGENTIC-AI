@@ -1,0 +1,40 @@
+FROM 25 MINUTS START ---- REAL LEC
+
+1 ST= STATE =CLASS WITH SCHEMA IS  DECIDED -- WITH TYPEDICT/PYDANTIC
+START AND END INBUILT NODES IN LANGGRAPH
+----------------
+from typing import TypedDict
+from langgraph.graph import StateGraph, START, END
+
+# 1. Define State (Shared Memory)
+class SimpleState(TypedDict):
+    name: str
+    age: int
+    message: str
+
+# 2. Define Nodes (Functions that process the state)
+def greet_user(state: SimpleState):         #######  HERE IT GETS ABOVE TYPEDICT SCHEMA VARS TO USE BELOW
+    greeting = f"Hello {state['name']}! You are {state['age']} years old."
+    return {"message": greeting} # Return the field you want to update
+
+def add_enthusiasm(state: SimpleState):
+    enhanced = f"{state['message']} Welcome to LangGraph! 🚀"
+    return {"message": enhanced}
+
+# 3. Build the Graph
+builder = StateGraph(SimpleState)
+builder.add_node("greet", greet_user)                                       #####  builder.add_node
+builder.add_node("enhance", add_enthusiasm)
+
+# 4. Define Logic Flow (Edges)
+builder.add_edge(START, "greet")                                        ######  builder.add_edge
+builder.add_edge("greet", "enhance")
+builder.add_edge("enhance", END)
+
+# 5. Compile and Run
+graph = builder.compile()
+initial_input = {"name": "Dheeraj", "age": 32, "message": ""}
+result = graph.invoke(initial_input)
+
+print(result["message"])
+--------------------
