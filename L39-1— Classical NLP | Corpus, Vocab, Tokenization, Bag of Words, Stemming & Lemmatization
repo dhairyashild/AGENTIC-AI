@@ -1,0 +1,85 @@
+Corpus  collection of docs
+
+Vocabulary List is the complete set of unique words extracted from a corpus
+
+Stemming: Cuts word endings to root form (fast, rough)               "studies" → "studi" (root) ✂️
+Lemmatization: Finds dictionary base form (accurate, slow)           "studies" → "study" (base) 📖
+
+give best main diff == Stemming fast but rough but Lemmatization accurate but slow
+
+Word        | Stem (Porter) | Lemma
+------------|---------------|--------
+running     | run           | run
+studies     | studi         | study
+better      | better        | good
+fairly      | fairli        | fairly
+university  | univers       | university
+happiness   | happi         | happiness
+-----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------
+BOW
+
+BOW SUMMERY TO REMMEBER JUST BELOW LINES
+**What is Bag of Words?**   ===  **SPARSE VECTORS** ==  text to numerical vectors
+**Step 1: Vocabulary Creation**
+**Step 2: Vectorization**
+------------------------------------------------------------------------------------------
+
+Bag of Words is technique that converts text to numerical vectors. 
+**How BoW Works? (2 Main Steps)**
+**Step 1: Vocabulary Creation**   == Create vocabulary from entire corpus (unique words list)
+**Step 2: Vectorization**  == Convert each document to vector where each position = word count in that document
+
+** Example Corpus:**
+Doc 1: "I love ML"
+Doc 2: "love deep learning"  
+Doc 3: "NLP and deep learning"
+
+**Vocabulary:** [i, love, ml, deep, learning, nlp, and]
+**Vectors:**
+Doc1: [1, 1, 1, 0, 0, 0, 0]
+Doc2: [0, 1, 0, 1, 1, 0, 0] 
+Doc3: [0, 0, 0, 1, 1, 1, 1]
+
+----------
+
+# Sparse Vectors & N-grams - ENGLISH CORRECTED NOTES
+
+**SPARSE VECTORS**
+BoW vectors are sparse vectors (mostly 0s). Real vocab = thousands/lakhs words, but docs use few words.
+- **Memory waste**: Most space stores zeros
+- **Computation slow**
+
+**N-GRAMS**
+Single words (unigrams) miss context. N-grams capture consecutive word groups:
+| Type     | N  | Example: "I love deep learning"              |
+|----------|----|---------------------------------------------|
+| Unigram  | 1  | ["I", "love", "deep", "learning"]           |
+| Bigram   | 2  | ["I love", "love deep", "deep learning"]    |
+| Trigram  | 3  | ["I love deep", "love deep learning"]       |
+
+**Details:**
+- **Unigrams (N=1)**: Individual words - most basic
+- **Bigrams (N=2)**: 2 consecutive words (captures "not good" vs "good")
+- **Trigrams (N=3)**: 3 words - more context, vocab explodes
+
+# BoW Limitations
+
+| Limitation          | Problem                          |
+|---------------------|----------------------------------|
+| **No word order**   | "dog bites man" = "man bites dog" |
+| **No semantics**    | "apple" (fruit) = "apple" (company) |
+| **High dimensionality** | 100K vocab = 100K features/doc |
+| **No context**      | "not good" = "good"             |
+| **Common words dominate** | "the", "is" → highest scores |
+
+
+
+
+
+
+
+
+
+
+
