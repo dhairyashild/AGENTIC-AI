@@ -72,3 +72,14 @@ output = structured_llm.invoke(query)
 
 print(output)
 # Result: {'name': 'Dheeraj', 'age': 32, 'email': 'dheeraj@gmail.com'}
+---------------------------------------------------------------
+# Pydantic with Field() - Complete Schema + Sample Code
+
+from pydantic import BaseModel, Field
+
+class User(BaseModel):
+    """Enhanced User schema with Field validation"""
+    name: str = Field(..., min_length=1, max_length=50, description="Full name")
+    age: int = Field(..., ge=0, le=120, description="Age in years")
+    blood_type: str = Field(..., regex=r"^(A|B|AB|O)[+-]$", description="A+, A-, B+, etc.")
+    email: str = Field(..., pattern=r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
